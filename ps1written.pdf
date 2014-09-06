@@ -1,0 +1,11 @@
+Problem 1
+(a) int=42
+(b) int=42
+(c) This expression is not well typed because the elements in the array do not all have the same type.  1, 9, 4, and 2 are of type int while -3. is of type float.  An array expects all of its elements to be of the same type.
+(d) int list=[2; 4; 6; 8; 10]
+(e) (string * string) list=[("zar"), ("doz")]
+(f) unit=()
+(g) int option=Some 3110
+(h) int=1764
+(i) This expression is not well typed because the function f expects an int, but it perceives f f 10 as f(f,10) with both f and 10 being arguments.
+(j) int=12
