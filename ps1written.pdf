@@ -9,3 +9,18 @@ Problem 1
 (h) int=1764
 (i) This expression is not well typed because the function f expects an int, but it perceives f f 10 as f(f,10) with both f and 10 being arguments.
 (j) int=12
+
+Problem 2
+(a) 1
+(b) ["hello world"]
+(c) 
+
+Problem 3
+(* This method takes two lists and returns a list of their sorted values *)
+let rec combine ((a: int list), (b: int list)) =
+  match (a,b) with
+    ([],[]) -> []
+  | ([], b) -> b
+  | (a, []) -> a
+  | (a,b) -> if List.hd(a)<List.hd(b) then List.hd(a)::zardoz(List.tl(a),b)
+             else List.hd(b)::zardoz(a,List.tl(b))
