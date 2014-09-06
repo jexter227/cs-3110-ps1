@@ -39,3 +39,14 @@ let rec powerset (lst: int list): int list list =
 	[] -> []::[]
 	| [a] -> []::[[a]]
 	| h::t -> insert_el(powerset(t),h)@powerset(t)
+
+(* requires: a string and an index
+ * returns: a string, the reverse of the input keeping the sign *)
+let rec rev_string ((x:string),(index:int)):string =
+	if(String.length(x)=index) then "" 
+	else rev_string((x),(index+1)) ^ Char.escaped(x.[index])
+(* requires: an int
+ * returns: an int, the reverse of the input keeping the sign *)
+let rec rev_int (x:int):int =
+	if x>0 then int_of_string(rev_string(string_of_int(x), 0))
+	else -1*int_of_string(rev_string(string_of_int(-1*x), 0))
