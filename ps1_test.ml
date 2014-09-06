@@ -25,4 +25,10 @@ TEST_UNIT "test powerset 2" = assert_true (List.length(powerset ([1;2])) = 4)
 TEST_UNIT "test powerset 3" = assert_true (List.length(powerset ([1;2;3])) = 8)
 TEST_UNIT "test powerset 4" = assert_true (powerset([]) = [[]])
 
+TEST_UNIT "test rev_int 1" = assert_true (rev_int(1)=1)
+TEST_UNIT "test rev_int 2" = assert_true (rev_int(0)=0)
+TEST_UNIT "test rev_int 3" = assert_true (rev_int(-1)=-1)
+TEST_UNIT "test rev_int 4" = assert_true (rev_int(-123)=-321)
+TEST_UNIT "test rev_int 5" = assert_true (rev_int(123)=321)
+
 let () = Pa_ounit_lib.Runtime.summarize()
