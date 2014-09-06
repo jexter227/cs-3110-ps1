@@ -19,4 +19,11 @@ TEST_UNIT "test is_unimodal 5" = assert_true (is_unimodal [1;1;1])
 TEST_UNIT "test is_unimodal 6" = assert_true (is_unimodal [1;2])
 TEST_UNIT "test is_unimodal 7" = assert_true (is_unimodal [2;1])
 
+
+TEST_UNIT "test powerset 1" = assert_true (powerset ([1]) = ([[],[1]]))
+TEST_UNIT "test powerset 2" = assert_true (powerset ([1;2]) = ([[],[1],[1;2],[2]]))
+TEST_UNIT "test powerset 3" = assert_true (powerset ([1;2;3]) 
+= ([[],[1],[2],[3],[1;2],[1;3],[2;3],[1;2;3]))
+TEST_UNIT "test powerset 4" = assert_true (powerset([]) = ([[]]))
+
 let () = Pa_ounit_lib.Runtime.summarize()
