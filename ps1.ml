@@ -50,3 +50,14 @@ let rec rev_string ((x:string),(index:int)):string =
 let rec rev_int (x:int):int =
 	if x>0 then int_of_string(rev_string(string_of_int(x), 0))
 	else -1*int_of_string(rev_string(string_of_int(-1*x), 0))
+
+let rec make_list (lst: 'a list) (index: int) (k: int):'a list =
+	if (List.length(lst)=0 || (index%k=0)) then []
+else lst.[index]::make_list(lst, index+1, k)
+
+let rec lists (lst: 'a list) (index: int) (k:int): 'a list list =
+	if (index*k<List.length(lst)) then make_list(lst)(0)(k)::lists(lst)(index+1)(k)
+
+let rec unflatten (k:int) (lst: 'a list): 'a list list option =
+	if(k<1) then None else
+	make_list(lst, 0, k)
