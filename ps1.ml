@@ -45,19 +45,28 @@ let rec powerset (lst: int list): int list list =
 let rec rev_string ((x:string),(index:int)):string =
 	if(String.length(x)=index) then "" 
 	else rev_string((x),(index+1)) ^ Char.escaped(x.[index])
+
 (* requires: an int
  * returns: an int, the reverse of the input keeping the sign *)
 let rec rev_int (x:int):int =
 	if x>0 then int_of_string(rev_string(string_of_int(x), 0))
 	else -1*int_of_string(rev_string(string_of_int(-1*x), 0))
 
-let rec make_list (lst: 'a list) (index: int) (k: int):'a list =
-	if (List.length(lst)=0 || (index%k=0)) then []
-else lst.[index]::make_list(lst, index+1, k)
+(* requires: a list, and two ints signifying the stop and start points
+ * returns: a sublist consisting of everything in the original list from
+ * the start index to the stop index *)
+let rec make_list ((lst: 'a list),(start: int),(stop: int)):'a list =
+	if (List.length(lst)<=start || (start=stop)) then []
+else (List.nth (lst) (start))::make_list ((lst),(start+1),(stop))
 
-let rec lists (lst: 'a list) (index: int) (k:int): 'a list list =
-	if (index*k<List.length(lst)) then make_list(lst)(0)(k)::lists(lst)(index+1)(k)
+(* requires: a list, an index (int), and a size of lists (k)
+ * returns: the original list unflattened with sublists of size k *)
+let rec lists ((lst: 'a list),(index: int),(k:int)): 'a list list =
+	if (index*k<List.length(lst)) then make_list((lst),(index*k),((index+1)*k))::lists(lst,index+1,k)
+else []
 
-let rec unflatten (k:int) (lst: 'a list): 'a list list option =
+(* requires: a sublist size and a list
+ * returns: an option of the unflattened list of lists*)
+let rec unflatten (k:int) (lst: 'a list): 'a list list option  =
 	if(k<1) then None else
-	make_list(lst, 0, k)
+	Some (lists (lst,0,k))
