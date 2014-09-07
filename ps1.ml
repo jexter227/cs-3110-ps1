@@ -26,15 +26,16 @@ let rec is_unimodal (lst: int list):bool =
 (* requires: an int list list and an int
  * returns: the int list list with the int cons'ed to each int list
  * example: insert_el([[];[1]],2) -> [[2];[2;1]] *)
-let rec insert_el ((lst:(int list) list),( el: int)): int list list =
-    match lst with 
-    [] -> []
-    | [[]] -> [[el]]
-    | h::t -> (el::h)::insert_el(t,el)
+
 
 (* requires: an int list 
  * returns: an int list list, the powerset of the int list *)
 let rec powerset (lst: int list): int list list =
+	let rec insert_el ((lst:(int list) list),( el: int)): int list list =
+    	match lst with 
+    	[] -> []
+    	| [[]] -> [[el]]
+    	| h::t -> (el::h)::insert_el(t,el) in
 	match lst with 
 	[] -> []::[]
 	| [a] -> []::[[a]]
