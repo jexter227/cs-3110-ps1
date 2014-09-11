@@ -94,7 +94,7 @@ let rec int_of_roman (r: roman) : int =
 		| D -> 500
 		| M -> 1000 in
 
-	(* requireS: a sum of the list, an int containing the previous numeral
+	(* requires: a sum of the list, an int containing the previous numeral
 	 * value, and a list of roman numerals
 	 * returns: the sum of the list of roman numerals *)
 	let rec keep_track_of_sum ((sum: int),(prev:int),(r: roman)) : int= 

@@ -13,11 +13,30 @@ Problem 1
 Problem 2
 (a) 1
 (b) ["hello world"]
-(c) 
+(c) let return_head (lst: float list): float = 
+	3.2
+(d) let return_int (x: int option): int = 
+	3
+(e) let return_list (lst: int list) (lst1: int list): int list = [3]
+
+(f) let g = fun f -> f[1] @ [1]
+
+(g) let return_list (lst: int list) (lst1: int list): int list = [3]
+
+(h) let f (b,c) = 
+match c with
+[] -> [(b+1,'a')]
+| h::t -> [((b+1),h)]
+
+(i) {hour=4; minute=27; am_pm="am"}
+
+(j) let f(t:time) = let {hour=x; minute=y; am_pm= z} = t
+in x
+
 
 Problem 3
 (* This method takes two lists and returns a list of their sorted values *)
-let rec combine ((a: int list), (b: int list)) =
+let rec combine_sort ((a: int list), (b: int list)) =
   match (a,b) with
     ([],[]) -> []
   | ([], b) -> b
